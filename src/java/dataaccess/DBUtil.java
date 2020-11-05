@@ -5,30 +5,18 @@
  */
 package dataaccess;
 
-import java.sql.*;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
- * @author 775653
+ * @author 758688
  */
 public class DBUtil {
-    public static void closePreparedStatement(Statement ps){
-        try {
-            if(ps != null){
-                ps.close();
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-    }
-    
-    public static void closeResultSet(ResultSet rs){
-        try {
-            if(rs != null){
-                rs.close();
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-    }
+   private static final EntityManagerFactory emf =
+           Persistence.createEntityManagerFactory("Week9LabPU");
+   
+   public static EntityManagerFactory getEmFactory()    {
+       return emf;
+   }
 }
